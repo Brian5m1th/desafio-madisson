@@ -1,4 +1,3 @@
-
 package com.manager.sermao.evento.domain;
 
 import java.time.LocalDateTime;
@@ -18,8 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter 
 @Entity
-
-public class evento {
+public class Sermao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,7 +37,7 @@ public class evento {
 
     private LocalDateTime dataHoraDoCadastro;
 
-    public evento(UUID id, @NotBlank String titulo, @NotBlank String tema, @NotNull LocalDateTime data,
+    public Sermao(UUID id, @NotBlank String titulo, @NotBlank String tema, @NotNull LocalDateTime data,
             @NotBlank String local, @NotBlank String igreja, String descricao, LocalDateTime dataHoraDoCadastro) {
         this.id = id;
         this.titulo = titulo;
