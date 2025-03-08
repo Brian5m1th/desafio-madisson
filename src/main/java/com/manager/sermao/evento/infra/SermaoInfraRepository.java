@@ -10,9 +10,12 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 @Log4j2
 public class SermaoInfraRepository implements SermaoRepository {
+    private final SermaoSpringDataJpaRepository sermaoSpringDataJpaRepository;
+
     @Override
     public void salva(Sermao sermao) {
         log.info("[start] SermaoInfraRepository - salva");
+        sermaoSpringDataJpaRepository.save(sermao);
         log.info("[finish] SermaoInfraRepository - salva");
     }
 }

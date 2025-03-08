@@ -2,11 +2,15 @@ spring:
   application:
     name: sermao
 
-datasource:
-  url: ${DATASOURCE_URL}
-  username: ${POSTGRES_USER}
-  password: ${POSTGRES_PASSWORD}
-  driver-class-name: org.postgresql.Driver
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
    
 server:
   servlet:
