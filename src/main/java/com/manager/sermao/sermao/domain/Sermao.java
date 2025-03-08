@@ -1,9 +1,9 @@
-package com.manager.sermao.evento.domain;
+package com.manager.sermao.sermao.domain;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.manager.sermao.evento.application.api.SermaoRequest;
+import com.manager.sermao.sermao.application.api.SermaoRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

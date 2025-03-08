@@ -1,6 +1,6 @@
-package com.manager.sermao.evento.infra;
+package com.manager.sermao.sermao.infra;
 
-import com.manager.sermao.evento.domain.Sermao;
+import com.manager.sermao.sermao.domain.Sermao;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

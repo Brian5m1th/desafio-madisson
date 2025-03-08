@@ -1,4 +1,4 @@
-package com.manager.sermao.evento.application.api;
+package com.manager.sermao.sermao.application.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

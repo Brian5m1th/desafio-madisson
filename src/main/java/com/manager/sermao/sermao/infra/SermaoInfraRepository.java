@@ -1,7 +1,7 @@
-package com.manager.sermao.evento.infra;
+package com.manager.sermao.sermao.infra;
 
-import com.manager.sermao.evento.application.repository.SermaoRepository;
-import com.manager.sermao.evento.domain.Sermao;
+import com.manager.sermao.sermao.application.repository.SermaoRepository;
+import com.manager.sermao.sermao.domain.Sermao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;

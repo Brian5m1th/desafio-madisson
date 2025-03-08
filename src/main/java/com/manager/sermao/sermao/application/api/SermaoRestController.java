@@ -1,6 +1,6 @@
-package com.manager.sermao.evento.application.api;
+package com.manager.sermao.sermao.application.api;
 
-import com.manager.sermao.evento.application.service.SermaoService;
+import com.manager.sermao.sermao.application.service.SermaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;

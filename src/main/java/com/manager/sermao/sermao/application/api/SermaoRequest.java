@@ -1,4 +1,4 @@
-package com.manager.sermao.evento.application.api;
+package com.manager.sermao.sermao.application.api;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
