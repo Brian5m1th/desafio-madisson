@@ -18,4 +18,6 @@ public class SermaoInfraRepository implements SermaoRepository {
         sermaoSpringDataJpaRepository.save(sermao);
         log.info("[finish] SermaoInfraRepository - salva");
     }
+
 }
+
