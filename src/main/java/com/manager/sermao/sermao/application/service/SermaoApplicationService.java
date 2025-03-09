@@ -29,7 +29,8 @@ public class SermaoApplicationService implements SermaoService {
     @Override
     public List<SermaoDetalhaResponse> buscaTodosSermoes() {
         log.info("[start] SermaoApplicationService - buscaTodosSermoes");
+        List<Sermao> sermaoList = sermaoRepository.buscaTodosSermoes();
         log.info("[finish] SermaoApplicationService - buscaTodosSermoes");
-        return List.of();
+        return SermaoDetalhaResponse.converte(sermaoList);
     }
 }

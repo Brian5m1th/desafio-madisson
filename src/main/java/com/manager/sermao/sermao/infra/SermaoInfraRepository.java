@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 @Log4j2
@@ -19,5 +21,12 @@ public class SermaoInfraRepository implements SermaoRepository {
         log.info("[finish] SermaoInfraRepository - salva");
     }
 
+    @Override
+    public List<Sermao> buscaTodosSermoes() {
+        log.info("[start] SermaoInfraRepository - buscaTodosSermoes");
+        List<Sermao> listaDeSermoes = sermaoSpringDataJpaRepository.findAll();
+        log.info("[finish] SermaoInfraRepository - buscaTodosSermoes");
+        return listaDeSermoes;
+    }
 }
 
