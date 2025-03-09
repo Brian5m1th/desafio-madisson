@@ -1,9 +1,9 @@
-
-package com.manager.sermao.evento.domain;
+package com.manager.sermao.sermao.domain;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.manager.sermao.sermao.application.api.SermaoRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,12 +14,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter 
 @Entity
-
-public class evento {
+@ToString
+public class Sermao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,16 +40,15 @@ public class evento {
 
     private LocalDateTime dataHoraDoCadastro;
 
-    public evento(UUID id, @NotBlank String titulo, @NotBlank String tema, @NotNull LocalDateTime data,
-            @NotBlank String local, @NotBlank String igreja, String descricao, LocalDateTime dataHoraDoCadastro) {
-        this.id = id;
-        this.titulo = titulo;
-        this.tema = tema;
-        this.data = data;
-        this.local = local;
-        this.igreja = igreja;
-        this.descricao = descricao;
-        this.dataHoraDoCadastro = dataHoraDoCadastro;
+    public Sermao(SermaoRequest sermaoRequest) {
+
+        this.titulo = sermaoRequest.getTitulo();
+        this.tema = sermaoRequest.getTema();
+        this.data = sermaoRequest.getData();
+        this.local = sermaoRequest.getLocal();
+        this.igreja = sermaoRequest.getIgreja();
+        this.descricao = sermaoRequest.getDescricao();
+        this.dataHoraDoCadastro = LocalDateTime.now();
     }
 }
 
