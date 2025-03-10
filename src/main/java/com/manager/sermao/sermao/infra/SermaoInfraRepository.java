@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -37,7 +36,7 @@ public class SermaoInfraRepository implements SermaoRepository {
     public Sermao buscaSermaoPorId(UUID id) {
         log.info("[start] SermaoInfraRepository - buscaSermaoPorId");
         Sermao sermao = sermaoSpringDataJpaRepository.findById(id)
-                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"Sermão não encontrado") );
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Sermão não encontrado"));
         log.info("[finish] SermaoInfraRepository - buscaSermaoPorId");
         return sermao;
     }

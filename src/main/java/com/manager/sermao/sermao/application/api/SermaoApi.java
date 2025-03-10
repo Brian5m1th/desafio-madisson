@@ -19,7 +19,8 @@ public interface SermaoApi {
     @ResponseStatus(HttpStatus.OK)
     List<SermaoDetalhaResponse> getTodosSermoes();
 
-    @GetMapping(value = "/buscar-sermao/{id}")
+    @GetMapping(value = "/busca-sermao/{id}")
     @ResponseStatus(HttpStatus.OK)
     SermaoDetalhaResponse getBuscaIdSermoes(@PathVariable UUID id);
+
 }
