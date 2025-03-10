@@ -1,12 +1,15 @@
 package com.manager.sermao.sermao.infra;
 
+import com.manager.sermao.handler.APIException;
 import com.manager.sermao.sermao.application.repository.SermaoRepository;
 import com.manager.sermao.sermao.domain.Sermao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
@@ -27,6 +30,15 @@ public class SermaoInfraRepository implements SermaoRepository {
         List<Sermao> listaDeSermoes = sermaoSpringDataJpaRepository.findAll();
         log.info("[finish] SermaoInfraRepository - buscaTodosSermoes");
         return listaDeSermoes;
+    }
+
+    @Override
+    public Sermao buscaSermaoPorId(UUID id) {
+        log.info("[start] SermaoInfraRepository - buscaSermaoPorId");
+        Sermao sermao = sermaoSpringDataJpaRepository.findById(id)
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Sermão não encontrado"));
+        log.info("[finish] SermaoInfraRepository - buscaSermaoPorId");
+        return sermao;
     }
 }
 

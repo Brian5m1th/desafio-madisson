@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -32,5 +33,13 @@ public class SermaoApplicationService implements SermaoService {
         List<Sermao> sermaoList = sermaoRepository.buscaTodosSermoes();
         log.info("[finish] SermaoApplicationService - buscaTodosSermoes");
         return SermaoDetalhaResponse.converte(sermaoList);
+    }
+
+    @Override
+    public SermaoDetalhaResponse buscaSermaoPorId(UUID id) {
+        log.info("[start] SermaoApplicationService - buscaSermaoPorId");
+        Sermao sermao = sermaoRepository.buscaSermaoPorId(id);
+        log.info("[finish] SermaoApplicationService - buscaSermaoPorId");
+        return new SermaoDetalhaResponse(sermao);
     }
 }
