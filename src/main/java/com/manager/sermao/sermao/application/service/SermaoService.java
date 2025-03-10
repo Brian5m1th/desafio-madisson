@@ -11,5 +11,6 @@ public interface SermaoService {
     SermaoResponse criaSermao(SermaoRequest sermaoRequest);
     List<SermaoDetalhaResponse> buscaTodosSermoes();
     SermaoDetalhaResponse buscaSermaoPorId(UUID id);
+    void deletaSermaoPorId(UUID id);
 }
 

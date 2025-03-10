@@ -42,4 +42,12 @@ public class SermaoApplicationService implements SermaoService {
         log.info("[finish] SermaoApplicationService - buscaSermaoPorId");
         return new SermaoDetalhaResponse(sermao);
     }
+
+    @Override
+    public void deletaSermaoPorId(UUID id) {
+        log.info("[start] SermaoApplicationService - deletaSermaoPorId");
+        sermaoRepository.buscaSermaoPorId(id);
+        sermaoRepository.deletaSermaoPorId(id);
+        log.info("[finish] SermaoApplicationService - deletaSermaoPorId");
+    }
 }
