@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller 
 @RequestMapping("/v1/sermao")
@@ -18,4 +19,7 @@ public interface SermaoApi {
     @ResponseStatus(HttpStatus.OK)
     List<SermaoDetalhaResponse> getTodosSermoes();
 
+    @GetMapping(value = "/buscar-sermao/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    SermaoDetalhaResponse getBuscaIdSermoes(@PathVariable UUID id);
 }
