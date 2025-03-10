@@ -38,6 +38,7 @@ public class SermaoApplicationService implements SermaoService {
     @Override
     public SermaoDetalhaResponse buscaSermaoPorId(UUID id) {
         log.info("[start] SermaoApplicationService - buscaSermaoPorId");
+        Sermao sermao = sermaoRepository.buscaSermaoPorId(id);
         log.info("[finish] SermaoApplicationService - buscaSermaoPorId");
         return null;
     }
