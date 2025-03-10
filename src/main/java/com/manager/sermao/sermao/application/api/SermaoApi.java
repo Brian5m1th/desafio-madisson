@@ -14,7 +14,7 @@ public interface SermaoApi {
     @ResponseStatus(HttpStatus.CREATED)
     SermaoResponse postSermao(@Valid @RequestBody SermaoRequest sermaoRequest);
 
-    @GetMapping("/lista-sermao")
+    @GetMapping("/lista-sermoes")
     @ResponseStatus(HttpStatus.OK)
     List<SermaoDetalhaResponse> getTodosSermoes();
 

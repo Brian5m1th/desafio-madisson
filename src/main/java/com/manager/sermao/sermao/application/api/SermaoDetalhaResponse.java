@@ -26,6 +26,7 @@ public class SermaoDetalhaResponse {
     private String local;
     private String igreja;
     private String descricao;
+    private LocalDateTime dataHoraDoCadastro;
 
     public static List<SermaoDetalhaResponse> converte(List<Sermao> sermaoList) {
         return sermaoList.stream()
@@ -41,5 +42,7 @@ public class SermaoDetalhaResponse {
         this.local = sermao.getLocal();
         this.igreja = sermao.getIgreja();
         this.descricao = sermao.getDescricao();
+        this.dataHoraDoCadastro = sermao.getDataHoraDoCadastro();
     }
 }
+
