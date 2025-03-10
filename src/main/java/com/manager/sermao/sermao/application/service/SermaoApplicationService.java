@@ -19,6 +19,13 @@ public class SermaoApplicationService implements SermaoService {
     private final SermaoRepository sermaoRepository;
 
     @Override
+    public void deletaSermaoPorId(UUID id) {
+        log.info("[start] SermaoApplicationService - deletaSermaoPorId");
+
+        log.info("[finish] SermaoApplicationService - deletaSermaoPorId");
+    }
+
+    @Override
     public SermaoResponse criaSermao(SermaoRequest sermaoRequest) {
         log.info("[start] SermaoApplicationService - criaSermao");
         Sermao sermao = new Sermao(sermaoRequest);
@@ -37,9 +44,6 @@ public class SermaoApplicationService implements SermaoService {
 
     @Override
     public SermaoDetalhaResponse buscaSermaoPorId(UUID id) {
-        log.info("[start] SermaoApplicationService - buscaSermaoPorId");
-        Sermao sermao = sermaoRepository.buscaSermaoPorId(id);
-        log.info("[finish] SermaoApplicationService - buscaSermaoPorId");
-        return new SermaoDetalhaResponse(sermao);
+        return null;
     }
 }

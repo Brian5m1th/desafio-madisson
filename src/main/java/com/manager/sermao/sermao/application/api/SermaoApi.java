@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@Controller 
+@Controller
 @RequestMapping("/v1/sermao")
 public interface SermaoApi {
     @PostMapping("/novo-sermao")
@@ -23,4 +23,7 @@ public interface SermaoApi {
     @ResponseStatus(HttpStatus.OK)
     SermaoDetalhaResponse getBuscaIdSermoes(@PathVariable UUID id);
 
+    @DeleteMapping(value = "/deleta-sermao/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteSermaoPorId(@PathVariable UUID id);
 }

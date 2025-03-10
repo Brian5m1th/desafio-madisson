@@ -36,5 +36,13 @@ public class SermaoRestController implements SermaoApi {
         SermaoDetalhaResponse response = sermaoService.buscaSermaoPorId(id);
         log.info("[finish] SermaoRestController - getBuscaIdSermoes");
         return response;
+
+    }
+
+    @Override
+    public void deleteSermaoPorId(UUID id) {
+        log.info("[start] SermaoRestController - deletaSermao");
+        sermaoService.deletaSermaoPorId(id);
+        log.info("[finish] SermaoRestController - deletaSermao");;
     }
 }
