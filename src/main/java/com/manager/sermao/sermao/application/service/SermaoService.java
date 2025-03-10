@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface SermaoService {
-    void deletaSermaoPorId(UUID id);
     SermaoResponse criaSermao(SermaoRequest sermaoRequest);
     List<SermaoDetalhaResponse> buscaTodosSermoes();
     SermaoDetalhaResponse buscaSermaoPorId(UUID id);
+    void deletaSermaoPorId(UUID id);
 }
 

@@ -9,4 +9,5 @@ public interface SermaoRepository {
     void salva(Sermao sermao);
     List<Sermao> buscaTodosSermoes();
     Sermao buscaSermaoPorId(UUID id);
+    void deletaSermaoPorId(UUID id);
 }

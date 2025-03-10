@@ -40,5 +40,12 @@ public class SermaoInfraRepository implements SermaoRepository {
         log.info("[finish] SermaoInfraRepository - buscaSermaoPorId");
         return sermao;
     }
+
+    @Override
+    public void deletaSermaoPorId(UUID id) {
+        log.info("[start] SermaoInfraRepository - buscaSermaoPorId");
+        log.info("[finish] SermaoInfraRepository - buscaSermaoPorId");
+    }
 }
+
 
