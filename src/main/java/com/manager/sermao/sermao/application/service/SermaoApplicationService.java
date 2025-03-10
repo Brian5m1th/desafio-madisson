@@ -40,6 +40,6 @@ public class SermaoApplicationService implements SermaoService {
         log.info("[start] SermaoApplicationService - buscaSermaoPorId");
         Sermao sermao = sermaoRepository.buscaSermaoPorId(id);
         log.info("[finish] SermaoApplicationService - buscaSermaoPorId");
-        return null;
+        return new SermaoDetalhaResponse(sermao);
     }
 }
