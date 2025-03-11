@@ -17,17 +17,16 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter 
+@Getter
 @Entity
-@ToString
 public class Sermao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true , nullable = false)
+    @Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
     private UUID id;
     @NotBlank
-    private String titulo; 
+    private String titulo;
     @NotBlank
     private String tema;
     @NotNull
@@ -39,6 +38,7 @@ public class Sermao {
     private String descricao;
 
     private LocalDateTime dataHoraDoCadastro;
+    private LocalDateTime dataHoraDoAlteracao;
 
     public Sermao(SermaoRequest sermaoRequest) {
 
@@ -49,6 +49,17 @@ public class Sermao {
         this.igreja = sermaoRequest.getIgreja();
         this.descricao = sermaoRequest.getDescricao();
         this.dataHoraDoCadastro = LocalDateTime.now();
+    }
+
+    public void substituiSermao(SermaoRequest sermaoRequest) {
+
+        this.titulo = sermaoRequest.getTitulo();
+        this.tema = sermaoRequest.getTema();
+        this.data = sermaoRequest.getData();
+        this.local = sermaoRequest.getLocal();
+        this.igreja = sermaoRequest.getIgreja();
+        this.descricao = sermaoRequest.getDescricao();
+        this.dataHoraDoAlteracao = LocalDateTime.now();
     }
 }
 

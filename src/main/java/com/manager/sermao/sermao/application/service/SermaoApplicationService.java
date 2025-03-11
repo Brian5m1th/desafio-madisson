@@ -54,7 +54,9 @@ public class SermaoApplicationService implements SermaoService {
     @Override
     public void substituiSermaoPorId(UUID id, SermaoRequest sermaoRequest) {
         log.info("[start] SermaoApplicationService - substituiSermaoPorId");
-
+        Sermao  sermao = sermaoRepository.buscaSermaoPorId(id);
+        sermao.substituiSermao(sermaoRequest);
+        sermaoRepository.salva(sermao);
         log.info("[finish] SermaoApplicationService - substituiSermaoPorId");
     }
 }
