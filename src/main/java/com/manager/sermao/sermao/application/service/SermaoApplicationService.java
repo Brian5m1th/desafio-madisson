@@ -50,4 +50,11 @@ public class SermaoApplicationService implements SermaoService {
         sermaoRepository.deletaSermaoPorId(id);
         log.info("[finish] SermaoApplicationService - deletaSermaoPorId");
     }
+
+    @Override
+    public void substituiSermaoPorId(UUID id, SermaoRequest sermaoRequest) {
+        log.info("[start] SermaoApplicationService - substituiSermaoPorId");
+
+        log.info("[finish] SermaoApplicationService - substituiSermaoPorId");
+    }
 }
