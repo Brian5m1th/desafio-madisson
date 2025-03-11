@@ -29,5 +29,13 @@ public interface SermaoApi {
 
     @PutMapping(value = "/substitui-sermao/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void substituiSermaoPorId(@PathVariable UUID id,  @Valid @RequestBody SermaoRequest sermaoRequest);
+    void substituiSermaoPorId(@PathVariable UUID id, @Valid @RequestBody SermaoRequest sermaoRequest);
+
+    @GetMapping(value = "/filtra-sermao")
+    @ResponseStatus(HttpStatus.OK)
+    List<SermaoDetalhaResponse> getSermoesFiltrados(
+            @RequestParam(required = false) String igreja,
+            @RequestParam(required = false) String tema,
+            @RequestParam(required = false) String data
+    );
 }

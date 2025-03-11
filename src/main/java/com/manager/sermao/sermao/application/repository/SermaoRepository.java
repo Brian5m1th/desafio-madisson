@@ -1,7 +1,6 @@
 package com.manager.sermao.sermao.application.repository;
 
 import com.manager.sermao.sermao.domain.Sermao;
-
 import java.util.List;
 import java.util.UUID;
 

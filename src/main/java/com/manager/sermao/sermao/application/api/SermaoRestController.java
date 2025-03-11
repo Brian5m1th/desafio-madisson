@@ -1,5 +1,6 @@
 package com.manager.sermao.sermao.application.api;
 
+
 import com.manager.sermao.sermao.application.service.SermaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -43,7 +44,7 @@ public class SermaoRestController implements SermaoApi {
     public void deleteSermaoPorId(UUID id) {
         log.info("[start] SermaoRestController - deletaSermao");
         sermaoService.deletaSermaoPorId(id);
-        log.info("[finish] SermaoRestController - deletaSermao");;
+        log.info("[finish] SermaoRestController - deletaSermao");
     }
 
     @Override
@@ -52,6 +53,16 @@ public class SermaoRestController implements SermaoApi {
         sermaoService.substituiSermaoPorId(id, sermaoRequest);
         log.info("[finish] SermaoRestController - substituiSermaoPorId");
     }
+
+    @Override
+    public List<SermaoDetalhaResponse> getSermoesFiltrados(String igreja, String tema, String data) {
+        log.info("[start] SermaoRestController - getSermoesFiltrados");
+        List<SermaoDetalhaResponse> sermaoList = sermaoService.buscaSermoesFiltrados(igreja, tema, data);
+        log.info("[finish] SermaoRestController - getSermoesFiltrados");
+        return sermaoList;
+    }
+
+
 
 }
 
