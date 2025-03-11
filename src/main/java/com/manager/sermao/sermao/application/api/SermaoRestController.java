@@ -45,4 +45,13 @@ public class SermaoRestController implements SermaoApi {
         sermaoService.deletaSermaoPorId(id);
         log.info("[finish] SermaoRestController - deletaSermao");;
     }
+
+    @Override
+    public void substituiSermaoPorId(UUID id, SermaoRequest sermaoRequest) {
+        log.info("[start] SermaoRestController - substituiSermaoPorId");
+        sermaoService.substituiSermaoPorId(id, sermaoRequest);
+        log.info("[finish] SermaoRestController - substituiSermaoPorId");
+    }
+
 }
+

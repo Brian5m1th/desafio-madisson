@@ -26,4 +26,8 @@ public interface SermaoApi {
     @DeleteMapping(value = "/deleta-sermao/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteSermaoPorId(@PathVariable UUID id);
+
+    @PutMapping(value = "/substitui-sermao/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void substituiSermaoPorId(@PathVariable UUID id,  @Valid @RequestBody SermaoRequest sermaoRequest);
 }
