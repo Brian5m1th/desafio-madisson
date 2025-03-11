@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,6 +37,6 @@ public interface SermaoApi {
     List<SermaoDetalhaResponse> getSermoesFiltrados(
             @RequestParam(required = false) String igreja,
             @RequestParam(required = false) String tema,
-            @RequestParam(required = false) String data
+            @RequestParam(required = false) LocalDateTime data
     );
 }

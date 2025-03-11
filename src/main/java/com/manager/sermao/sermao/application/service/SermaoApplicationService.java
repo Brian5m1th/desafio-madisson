@@ -8,6 +8,8 @@ import com.manager.sermao.sermao.domain.Sermao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -53,9 +55,16 @@ public class SermaoApplicationService implements SermaoService {
     @Override
     public void substituiSermaoPorId(UUID id, SermaoRequest sermaoRequest) {
         log.info("[start] SermaoApplicationService - substituiSermaoPorId");
-        Sermao  sermao = sermaoRepository.buscaSermaoPorId(id);
+        Sermao sermao = sermaoRepository.buscaSermaoPorId(id);
         sermao.substituiSermao(sermaoRequest);
         sermaoRepository.salva(sermao);
         log.info("[finish] SermaoApplicationService - substituiSermaoPorId");
+    }
+
+    public List<SermaoDetalhaResponse> buscaSermoesFiltrados(String igreja, String tema, LocalDateTime data) {
+        log.info("[start] SermaoApplicationService - buscarSermoesFiltrados");
+        List<Sermao> filtraSermoesList = sermaoRepository.buscaSermoesFiltrados(igreja, tema, data);
+        log.info("[finish] SermaoApplicationService - buscarSermoesFiltrados");
+        return SermaoDetalhaResponse.converte(filtraSermoesList);
     }
 }

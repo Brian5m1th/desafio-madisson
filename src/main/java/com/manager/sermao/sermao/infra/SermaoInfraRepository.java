@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -47,6 +48,12 @@ public class SermaoInfraRepository implements SermaoRepository {
         sermaoSpringDataJpaRepository.deleteById(id);
         log.info("[finish] SermaoInfraRepository - buscaSermaoPorId");
     }
+
+    @Override
+    public List<Sermao> buscaSermoesFiltrados(String igreja, String tema, LocalDateTime data) {
+        log.info("[start] SermaoInfraRepository - buscaSermoesFiltrados");
+        List<Sermao> sermaoList = sermaoSpringDataJpaRepository.findByIgrejaOrTemaOrData(igreja, tema, data);
+        log.info("[finish] SermaoInfraRepository - buscaSermoesFiltrados");
+        return sermaoList;
+    }
 }
-
-
