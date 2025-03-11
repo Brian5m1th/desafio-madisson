@@ -1,10 +1,12 @@
 package com.manager.sermao.sermao.application.api;
 
+
 import com.manager.sermao.sermao.application.service.SermaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,7 +45,7 @@ public class SermaoRestController implements SermaoApi {
     public void deleteSermaoPorId(UUID id) {
         log.info("[start] SermaoRestController - deletaSermao");
         sermaoService.deletaSermaoPorId(id);
-        log.info("[finish] SermaoRestController - deletaSermao");;
+        log.info("[finish] SermaoRestController - deletaSermao");
     }
 
     @Override
@@ -52,6 +54,17 @@ public class SermaoRestController implements SermaoApi {
         sermaoService.substituiSermaoPorId(id, sermaoRequest);
         log.info("[finish] SermaoRestController - substituiSermaoPorId");
     }
+
+    @Override
+    public List<SermaoDetalhaResponse> getSermoesFiltrados(String igreja, String tema, LocalDateTime data) {
+        log.info("[start] SermaoRestController - getSermoesFiltrados");
+        log.info("QueryParaments: igreja: {} tema: {} data: {}", igreja, tema, data);
+        List<SermaoDetalhaResponse> sermaoList = sermaoService.buscaSermoesFiltrados(igreja, tema, data);
+        log.info("[finish] SermaoRestController - getSermoesFiltrados");
+        return sermaoList;
+    }
+
+
 
 }
 
