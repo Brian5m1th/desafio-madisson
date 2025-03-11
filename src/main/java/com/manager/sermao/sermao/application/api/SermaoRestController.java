@@ -4,7 +4,6 @@ package com.manager.sermao.sermao.application.api;
 import com.manager.sermao.sermao.application.service.SermaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
