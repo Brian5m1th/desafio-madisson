@@ -5,6 +5,7 @@ import com.manager.sermao.sermao.application.repository.SermaoRepository;
 import com.manager.sermao.sermao.domain.Sermao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,11 @@ public class SermaoInfraRepository implements SermaoRepository {
     @Override
     public void salva(Sermao sermao) {
         log.info("[start] SermaoInfraRepository - salva");
-        sermaoSpringDataJpaRepository.save(sermao);
+        try {
+            sermaoSpringDataJpaRepository.save(sermao);
+        } catch (DataIntegrityViolationException e) {
+            throw APIException.build(HttpStatus.CONFLICT, "Erro ao salvar sermão");
+        }
         log.info("[finish] SermaoInfraRepository - salva");
     }
 
