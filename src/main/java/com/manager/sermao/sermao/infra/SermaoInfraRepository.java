@@ -5,6 +5,7 @@ import com.manager.sermao.sermao.application.repository.SermaoRepository;
 import com.manager.sermao.sermao.domain.Sermao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
@@ -52,8 +53,12 @@ public class SermaoInfraRepository implements SermaoRepository {
     @Override
     public List<Sermao> buscaSermoesFiltrados(String igreja, String tema, LocalDateTime data) {
         log.info("[start] SermaoInfraRepository - buscaSermoesFiltrados");
-        List<Sermao> sermaoList = sermaoSpringDataJpaRepository.findByIgrejaOrTemaOrData(igreja, tema, data);
+        Specification<Sermao> spec = Specification.where(SermaoSpecifications.hasIgreja(igreja)
+                .and(SermaoSpecifications.hasTema(tema))
+                .and(SermaoSpecifications.hasData(data)));
+        List<Sermao> sermaoList = sermaoSpringDataJpaRepository.findAll(spec);
         log.info("[finish] SermaoInfraRepository - buscaSermoesFiltrados");
         return sermaoList;
     }
+
 }

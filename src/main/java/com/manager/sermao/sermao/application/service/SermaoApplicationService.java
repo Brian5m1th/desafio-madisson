@@ -19,6 +19,7 @@ import java.util.UUID;
 public class SermaoApplicationService implements SermaoService {
     private final SermaoRepository sermaoRepository;
 
+
     @Override
     public SermaoResponse criaSermao(SermaoRequest sermaoRequest) {
         log.info("[start] SermaoApplicationService - criaSermao");
@@ -61,10 +62,11 @@ public class SermaoApplicationService implements SermaoService {
         log.info("[finish] SermaoApplicationService - substituiSermaoPorId");
     }
 
+    @Override
     public List<SermaoDetalhaResponse> buscaSermoesFiltrados(String igreja, String tema, LocalDateTime data) {
-        log.info("[start] SermaoApplicationService - buscarSermoesFiltrados");
-        List<Sermao> filtraSermoesList = sermaoRepository.buscaSermoesFiltrados(igreja, tema, data);
-        log.info("[finish] SermaoApplicationService - buscarSermoesFiltrados");
-        return SermaoDetalhaResponse.converte(filtraSermoesList);
+        log.info("[start] SermaoInfraRepository - buscaSermoesFiltrados");
+        List<Sermao> sermaoList = sermaoRepository.buscaSermoesFiltrados(igreja, tema, data);
+        log.info("[finish] SermaoInfraRepository - buscaSermoesFiltrados");
+        return SermaoDetalhaResponse.converte(sermaoList);
     }
 }
