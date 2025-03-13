@@ -66,4 +66,9 @@ public class SermaoInfraRepository implements SermaoRepository {
         return sermaoList;
     }
 
+    @Override
+    public boolean existsByTemaAndIgrejaAndData(String tema, String igreja, LocalDateTime data) {
+        return sermaoSpringDataJpaRepository.existsByTemaAndIgrejaAndData(tema, igreja, data);
+    }
+
 }

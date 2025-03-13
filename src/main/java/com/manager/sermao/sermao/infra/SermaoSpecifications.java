@@ -2,13 +2,11 @@ package com.manager.sermao.sermao.infra;
 
 import com.manager.sermao.sermao.domain.Sermao;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-
-
+@Component
 public class SermaoSpecifications {
 
     public static Specification<Sermao> hasIgreja(String igreja) {
@@ -38,4 +36,3 @@ public class SermaoSpecifications {
         };
     }
 }
-
