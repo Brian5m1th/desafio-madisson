@@ -67,4 +67,3 @@ public class SermaoRestController implements SermaoApi {
 
 
 }
-
