@@ -2,11 +2,13 @@ package com.manager.sermao.sermao.application.api;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@AllArgsConstructor
 public class SermaoRequest {
 
     @NotBlank
