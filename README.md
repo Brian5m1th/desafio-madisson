@@ -48,10 +48,10 @@ O Gerenciador de Sermões é uma aplicação Spring Boot projetada para gerencia
    
     - Defina as Variaveis de Ambiente Presentes do `application.yml` Com Suas Credenciais Do Banco De Dados:
         ```bash
-DATASOURCE_URL=
-POSTGRES_USER=
-POSTGRES_PASSWORD=
-POSTGRES_DB=
+        DATASOURCE_URL=
+        POSTGRES_USER=
+        POSTGRES_PASSWORD=
+        POSTGRES_DB=
         ```
 
 
