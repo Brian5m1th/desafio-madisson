@@ -25,22 +25,16 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class SermaoApplicationServiceTest {
-
     @InjectMocks
     private SermaoApplicationService sermaoApplicationService;
-
     @Mock
     private SermaoRepository sermaoRepository;
 
-
     @Test
     void criaSermao() {
-
         SermaoRequest sermaoRequest = DataHelper.criaSermaoRequest();
 
         doNothing().when(sermaoRepository).salva(any(Sermao.class));
-
-
         SermaoResponse sermaoResponse = sermaoApplicationService.criaSermao(sermaoRequest);
 
         verify(sermaoRepository, times(1)).salva(any(Sermao.class));
@@ -50,7 +44,6 @@ class SermaoApplicationServiceTest {
 
     @Test
     void lancaExceptionAocriaSermao() {
-
         SermaoRequest sermaoRequest = DataHelper.criaSermaoRequest();
 
         when(sermaoRepository.existsByTemaAndIgrejaAndData(
@@ -62,11 +55,10 @@ class SermaoApplicationServiceTest {
         assertEquals(HttpStatus.CONFLICT, apiException.getStatusException() );
         verify(sermaoRepository, never()).salva(any(Sermao.class));
     }
+
     @Test
     void buscaTodosSermoes() {
-
         when(sermaoRepository.buscaTodosSermoes()).thenReturn(Collections.emptyList());
-
         List<SermaoDetalhaResponse> response = sermaoApplicationService.buscaTodosSermoes();
 
         assertNotNull(response);
@@ -80,7 +72,6 @@ class SermaoApplicationServiceTest {
         Sermao sermao = DataHelper.criaSermao();
 
         when(sermaoRepository.buscaSermaoPorId(id)).thenReturn(sermao);
-
         SermaoDetalhaResponse response = sermaoApplicationService.buscaSermaoPorId(id);
 
         assertNotNull(response);
@@ -93,7 +84,6 @@ class SermaoApplicationServiceTest {
         UUID id = UUID.randomUUID();
 
         doNothing().when(sermaoRepository).deletaSermaoPorId(id);
-
         sermaoApplicationService.deletaSermaoPorId(id);
 
         verify(sermaoRepository, times(1)).deletaSermaoPorId(id);
@@ -107,7 +97,6 @@ class SermaoApplicationServiceTest {
 
         when(sermaoRepository.buscaSermaoPorId(id)).thenReturn(sermao);
         doNothing().when(sermaoRepository).salva(any(Sermao.class));
-
         sermaoApplicationService.substituiSermaoPorId(id, sermaoRequest);
 
         verify(sermaoRepository, times(1)).buscaSermaoPorId(id);
@@ -121,7 +110,6 @@ class SermaoApplicationServiceTest {
         LocalDateTime data = LocalDateTime.now();
 
         when(sermaoRepository.buscaSermoesFiltrados(igreja, tema, data)).thenReturn(Collections.emptyList());
-
         List<SermaoDetalhaResponse> response = sermaoApplicationService.buscaSermoesFiltrados(igreja, tema, data);
 
         assertNotNull(response);
