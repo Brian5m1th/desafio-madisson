@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -71,4 +72,20 @@ class SermaoApplicationServiceTest {
         assertTrue(response.isEmpty());
         verify(sermaoRepository, times(1)).buscaTodosSermoes();
     }
+
+    @Test
+    void buscaSermaoPorId() {
+        UUID id = UUID.randomUUID();
+        Sermao sermao = DataHelper.criaSermao();
+
+        when(sermaoRepository.buscaSermaoPorId(id)).thenReturn(sermao);
+
+        SermaoDetalhaResponse response = sermaoApplicationService.buscaSermaoPorId(id);
+
+        assertNotNull(response);
+        assertEquals(sermao.getId(), response.getId());
+        verify(sermaoRepository, times(1)).buscaSermaoPorId(id);
+    }
+
+
 }
