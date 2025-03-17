@@ -98,5 +98,21 @@ class SermaoApplicationServiceTest {
         verify(sermaoRepository, times(1)).deletaSermaoPorId(id);
     }
 
+    @Test
+    void substituiSermaoPorId() {
+        UUID id = UUID.randomUUID();
+        SermaoRequest sermaoRequest = DataHelper.criaSermaoRequest();
+        Sermao sermao = DataHelper.criaSermao();
+
+        when(sermaoRepository.buscaSermaoPorId(id)).thenReturn(sermao);
+        doNothing().when(sermaoRepository).salva(any(Sermao.class));
+
+        sermaoApplicationService.substituiSermaoPorId(id, sermaoRequest);
+
+        verify(sermaoRepository, times(1)).buscaSermaoPorId(id);
+        verify(sermaoRepository, times(1)).salva(any(Sermao.class));
+    }
+
+
 
 }
