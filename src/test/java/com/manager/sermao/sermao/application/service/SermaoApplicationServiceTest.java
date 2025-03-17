@@ -87,5 +87,16 @@ class SermaoApplicationServiceTest {
         verify(sermaoRepository, times(1)).buscaSermaoPorId(id);
     }
 
+    @Test
+    void deletaSermaoPorId() {
+        UUID id = UUID.randomUUID();
+
+        doNothing().when(sermaoRepository).deletaSermaoPorId(id);
+
+        sermaoApplicationService.deletaSermaoPorId(id);
+
+        verify(sermaoRepository, times(1)).deletaSermaoPorId(id);
+    }
+
 
 }
