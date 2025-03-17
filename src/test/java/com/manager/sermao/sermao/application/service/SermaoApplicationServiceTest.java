@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -113,6 +114,18 @@ class SermaoApplicationServiceTest {
         verify(sermaoRepository, times(1)).salva(any(Sermao.class));
     }
 
+    @Test
+    void buscaSermoesFiltrados() {
+        String igreja = "igreja";
+        String tema = "tema";
+        LocalDateTime data = LocalDateTime.now();
 
+        when(sermaoRepository.buscaSermoesFiltrados(igreja, tema, data)).thenReturn(Collections.emptyList());
 
+        List<SermaoDetalhaResponse> response = sermaoApplicationService.buscaSermoesFiltrados(igreja, tema, data);
+
+        assertNotNull(response);
+        assertTrue(response.isEmpty());
+        verify(sermaoRepository, times(1)).buscaSermoesFiltrados(igreja, tema, data);
+    }
 }
