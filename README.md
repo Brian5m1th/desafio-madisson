@@ -47,12 +47,11 @@ O Gerenciador de Sermões é uma aplicação Spring Boot projetada para gerencia
     - Cheque Se O Docker Engine Esta Ativo
    
     - Defina as Variaveis de Ambiente Presentes do `application.yml` Com Suas Credenciais Do Banco De Dados:
-        ```yml
-      datasource:
-          url: ${DATASOURCE_URL}
-          username: ${POSTGRES_USER}
-          password: ${POSTGRES_PASSWORD}
-          driver-class-name: org.postgresql.Driver
+        ```bash
+DATASOURCE_URL=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_DB=
         ```
 
 
@@ -67,8 +66,14 @@ O Gerenciador de Sermões é uma aplicação Spring Boot projetada para gerencia
    http://localhost:8080/sermao-manager/api/public/swagger
    ```
    
+   
    ### Executando Testes
 
+ Inicie os containers no Docker:
+   ```bash
+   docker compose up -d
+   ```
+   
 Para executar os testes unitários, use o seguinte comando:
 ```sh
 ./mvnw test
