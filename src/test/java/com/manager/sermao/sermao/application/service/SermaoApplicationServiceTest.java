@@ -2,6 +2,7 @@ package com.manager.sermao.sermao.application.service;
 
 import com.manager.sermao.DataHelper;
 import com.manager.sermao.handler.APIException;
+import com.manager.sermao.sermao.application.api.SermaoDetalhaResponse;
 import com.manager.sermao.sermao.application.api.SermaoRequest;
 import com.manager.sermao.sermao.application.api.SermaoResponse;
 import com.manager.sermao.sermao.application.repository.SermaoRepository;
@@ -12,6 +13,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -55,5 +59,16 @@ class SermaoApplicationServiceTest {
 
         assertEquals(HttpStatus.CONFLICT, apiException.getStatusException() );
         verify(sermaoRepository, never()).salva(any(Sermao.class));
+    }
+    @Test
+    void buscaTodosSermoes() {
+
+        when(sermaoRepository.buscaTodosSermoes()).thenReturn(Collections.emptyList());
+
+        List<SermaoDetalhaResponse> response = sermaoApplicationService.buscaTodosSermoes();
+
+        assertNotNull(response);
+        assertTrue(response.isEmpty());
+        verify(sermaoRepository, times(1)).buscaTodosSermoes();
     }
 }
