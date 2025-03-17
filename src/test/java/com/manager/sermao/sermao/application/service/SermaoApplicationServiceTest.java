@@ -1,6 +1,7 @@
 package com.manager.sermao.sermao.application.service;
 
 import com.manager.sermao.DataHelper;
+import com.manager.sermao.handler.APIException;
 import com.manager.sermao.sermao.application.api.SermaoRequest;
 import com.manager.sermao.sermao.application.api.SermaoResponse;
 import com.manager.sermao.sermao.application.repository.SermaoRepository;
@@ -10,9 +11,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -28,7 +29,6 @@ class SermaoApplicationServiceTest {
 
     @Test
     void criaSermao() {
-        Sermao sermao = DataHelper.criaSermao();
 
         SermaoRequest sermaoRequest = DataHelper.criaSermaoRequest();
 
@@ -40,5 +40,20 @@ class SermaoApplicationServiceTest {
         verify(sermaoRepository, times(1)).salva(any(Sermao.class));
         assertNotNull(sermaoResponse);
         assertEquals(SermaoResponse.class, sermaoResponse.getClass());
+    }
+
+    @Test
+    void lancaExceptionAocriaSermao() {
+
+        SermaoRequest sermaoRequest = DataHelper.criaSermaoRequest();
+
+        when(sermaoRepository.existsByTemaAndIgrejaAndData(
+                sermaoRequest.getTema(), sermaoRequest.getIgreja(), sermaoRequest.getData()))
+                .thenReturn(true);
+
+        APIException apiException = assertThrows(APIException.class, () -> sermaoApplicationService.criaSermao(sermaoRequest));
+
+        assertEquals(HttpStatus.CONFLICT, apiException.getStatusException() );
+        verify(sermaoRepository, never()).salva(any(Sermao.class));
     }
 }
